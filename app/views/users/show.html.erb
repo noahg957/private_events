@@ -1,2 +1,8 @@
-<h1>User <%= @user.id %></h1>
-<p><%= @user.username %></p>
+<h1>Currently viewing <%= @user.username %>'s profile</h1>
+<h3><%= @user.username %>'s Events:</h3>
+<% @events.each do |event| %>
+  <div class='event'>
+    <h4>Name: <%= event.name %></h4>
+    <p>Description: <%= event.description %></p>
+  </div>
+<% end %>

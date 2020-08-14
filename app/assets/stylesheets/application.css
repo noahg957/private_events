@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .event {
+   background-color: lightblue;
+ }
