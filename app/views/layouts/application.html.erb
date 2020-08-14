@@ -10,6 +10,11 @@
   </head>
 
   <body>
+  <% unless session[:user_id] == nil %>
+    <h1>You are <%=User.find(session[:user_id]).username %></h1>
+  <% else %>
+    <button><%= link_to "Log In", new_session_path %></button>
+  <%end%>
     <%= yield %>
   </body>
 </html>
