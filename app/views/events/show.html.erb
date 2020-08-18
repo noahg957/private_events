@@ -7,8 +7,10 @@
 <% @attendees.each do |attendee| %>
   <h6><%= link_to attendee.username, attendee %></h6>
 <% end %>
-<% unless @current_user.nil? %>
+<% if !@current_user.nil? && @upcoming%>
   <%= button_to 'Attend', attend_event_path(@event), method: :post %>
+<% elsif !@upcoming %>
+  <p>Sorry, can't attend because this event has passed</p>
 <% else %>
   <p>Must login to mark as attending</p>
 <% end %>

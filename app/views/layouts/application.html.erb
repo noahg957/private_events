@@ -16,7 +16,7 @@
   <% unless session[:user_id] == nil %>
     <% current_user =  User.find(session[:user_id])%>
     <button><%= link_to "Logout", session_path(current_user), method: :delete %></button>
-    <h3>You are <%=current_user.username %></h3>
+    <h3>You are <%=link_to current_user.username, current_user %></h3>
   <% else %>
     <button><%= link_to "Log In", new_session_path %></button>
     <button><%= link_to 'Sign Up', new_user_path %></button>

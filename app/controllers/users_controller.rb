@@ -21,8 +21,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @hosting_events = @user.created_events
     @attending_events = @user.attending_events
-    @upcoming_events = @user.upcoming_events
-    @past_events = @user.past_events
+    @upcoming_events = @user.attending_events.upcoming
+    @past_events = @user.attending_events.past
   end
 
 private

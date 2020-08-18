@@ -26,11 +26,13 @@ class EventsController < ApplicationController
       @current_user =  User.find(session[:user_id])
     end
     @event = Event.find(params[:id])
+    Event.upcoming.include?(@event) ? @upcoming = true : @upcoming = false
     @attendees = @event.attendees
   end
 
   def index
-    @events = Event.order("created_at DESC")
+    @upcoming_events = Event.upcoming.order('event_date ASC')
+    @past_events = Event.past.order('event_date DESC')
   end
 
   def attend
