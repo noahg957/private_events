@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
+<h1><%= @event.name %>
+<h3>Hosted by: <%= link_to @event.creator.username, @event.creator %></h3>
+<h5><%= @event.description %></h5>
+<h5><%= @event.event_date.strftime("%m/%d/%Y") if !@event.event_date.nil? %></h5>
+<h3>Attendees:</h3>
+<% @attendees.each do |attendee| %>
+  <h6><%= link_to attendee.username, attendee %></h6>
+<% end %>
+<% unless @current_user.nil? %>
+  <%= button_to 'Attend', attend_event_path(@event), method: :post %>
+<% else %>
+  <p>Must login to mark as attending</p>
+<% end %>
 <%= link_to 'Back', events_path %>

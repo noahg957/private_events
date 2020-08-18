@@ -1,8 +1,23 @@
 <h1>Currently viewing <%= @user.username %>'s profile</h1>
-<h3><%= @user.username %>'s Events:</h3>
-<% @events.each do |event| %>
+<h3><%= @user.username %>'s Hosted Events:</h3>
+<% @hosting_events.each do |event| %>
   <div class='event'>
-    <h4>Name: <%= event.name %></h4>
+    <h4>Name: <%= link_to event.name, event %></h4>
+    <p>Description: <%= event.description %></p>
+  </div>
+<% end %>
+<h3><%= @user.username %> will be at:</h3>
+<% @upcoming_events.each do |event| %>
+  <div class='event'>
+    <h4>Name: <%= link_to event.name, event %></h4>
+    <p>Description: <%= event.description %></p>
+  </div>
+<% end %>
+
+<h3><%= @user.username %> was at: </h3>
+<% @past_events.each do |event| %>
+  <div class='event'>
+    <h4>Name: <%= link_to event.name, event %></h4>
     <p>Description: <%= event.description %></p>
   </div>
 <% end %>
